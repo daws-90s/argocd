@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-app
+  namespace: argocd
+  # The finalizer enables cascading deletes (deleting this app deletes its resources)
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  # The Argo CD project this application belongs to
+  project: default
+
+  source:
+    repoURL: https://github.com/daws-90s/argocd.git
+    targetRevision: main
+    path: applications
+
+  # Destination configuration pointing to the target cluster and namespace
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+
+  syncPolicy:
+    automated:
+      prune: true       # Automatically deletes resources no longer in Git
+      selfHeal: true  
