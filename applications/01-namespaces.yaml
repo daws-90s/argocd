@@ -11,9 +11,9 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/argoproj/argocd-example-apps.git
-    targetRevision: HEAD
-    path: guestbook
+    repoURL: https://github.com/daws-90s/argocd.git
+    targetRevision: main
+    path: namespaces
 
   # Destination configuration pointing to the target cluster and namespace
   destination:
