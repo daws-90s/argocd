@@ -16,8 +16,8 @@ spec:
     targetRevision: 2.64.0 # chart-version
     helm:
       # --set
-      values: |
-        name: aws-ebs-csi-driver
+      # values: |
+      #   name: aws-ebs-csi-driver
 
   # Destination configuration pointing to the target cluster and namespace
   destination:
