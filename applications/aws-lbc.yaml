@@ -13,7 +13,7 @@ spec:
   source:
     chart: aws-load-balancer-controller
     repoURL: https://aws.github.io/eks-charts
-    #targetRevision: 1.16.1 # chart-version
+    targetRevision: 3.5.0 # chart-version
     helm:
       # --set
       values: |
