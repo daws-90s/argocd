@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ebs-drivers
+  namespace: argocd
+  # The finalizer enables cascading deletes (deleting this app deletes its resources)
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  # The Argo CD project this application belongs to
+  project: default
+
+  source:
+    chart: aws-ebs-csi-driver
+    repoURL: https://kubernetes-sigs.github.io/aws-ebs-csi-driver
+    targetRevision: 2.64.0 # chart-version
+    helm:
+      # --set
+      values: |
+        name: aws-ebs-csi-driver
+
+  # Destination configuration pointing to the target cluster and namespace
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
+
+  syncPolicy:
+    automated:
+      prune: true       # Automatically deletes resources no longer in Git
+      selfHeal: true  
