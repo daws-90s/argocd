@@ -11,7 +11,6 @@ spec:
   project: default
 
   source:
-    chart: aws-load-balancer-controller
     repoURL: https://github.com/daws-90s/roboshop-helm.git
     targetRevision: main # chart-version
     path: catalogue
